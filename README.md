@@ -6,8 +6,9 @@
 - 개발 os = ubuntu
 - 개발환경 = ruby-mine
 
-### API
-/api
+## API文書
+### /api
+### /articles
 -  GET /articles  -  すべてのarticles get
 -  Get /articles/:id  -  idのarticleを get
 -  POST /articles  -  create article
@@ -45,8 +46,13 @@
      "keyword": "a"
   }
 
+### /usres
+
+
+### /categories
 - GET /categories  -  すべてのcategoriesをget
 
+### /tags
 
   
   /users
