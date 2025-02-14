@@ -6,7 +6,7 @@
 - 開発os = ubuntu
 - 開発tool = ruby-mine
 
-DB Diagram `\n`
+### DB Diagram 
 <img src="https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104" width="50%" />
 
 
