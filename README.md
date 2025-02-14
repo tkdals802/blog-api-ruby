@@ -12,10 +12,19 @@
 ### project構造
 
 * app/
-  * models/
-  * views/
- 
-├── app/ │ ├── models/ │ └── views/
+  * controllers/
+     * api/  -  api controllerのdirectory
+  application_controller.rb  -  jwt tokenのcode
+  * models/  -  db modelの 1:1 / 1:n / n:m 関係を正義
+* config/
+  * database.yml  -  postgres dbのusername, password, portを正義
+  * routes.rb  -  api routeを正義
+* db/
+  *migrate/  -  db migrate file
+  schema.rb  -  tableの形が正義
+* .env  -  ENVの正義 ( example: jwt secret key )
+* .gitignore  -  .env fileを追加
+* Gemfile
 
 
 ## API文書
