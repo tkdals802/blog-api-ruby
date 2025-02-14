@@ -12,7 +12,7 @@
 -  Get /articles/:id  -  get one article
 -  POST /articles
 -  ```json
-    params = {
+   {
     "article":{
         "title": "hello",
         "content": "hello world!!!",
