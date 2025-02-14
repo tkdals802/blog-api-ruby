@@ -7,7 +7,7 @@ postgres-version = 14.15
 개발 os = ubuntu
 개발환경 = ruby-mine
 
-###API
+### API
 /api
   GET /articles  -  get all articles
   Get /articles/:id  -  get one article
