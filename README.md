@@ -8,9 +8,9 @@
 
 ### API
 /api
-  GET /articles  -  get all articles
-  Get /articles/:id  -  get one article
-  POST /articles
+-  GET /articles  -  get all articles
+-  Get /articles/:id  -  get one article
+-  POST /articles
     params = {
     "article":{
         "title": "hello",
