@@ -3,8 +3,13 @@
 - ruby-version = 3.4.1
 - rails-version = 8.0.1
 - postgres-version = 14.15
-- 개발 os = ubuntu
-- 개발환경 = ruby-mine
+- 開発os = ubuntu
+- 開発tool = ruby-mine
+
+DB Diagram
+![image](https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104)
+
+
 
 ## API文書
 ### localhost:3000/api ~
