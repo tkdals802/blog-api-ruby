@@ -7,7 +7,7 @@
 - 개발환경 = ruby-mine
 
 ## API文書
-### /api
+### localhost:3000/api ~
 ### /articles
 -  GET /articles  -  すべてのarticles get
 -  Get /articles/:id  -  idのarticleを get
@@ -47,17 +47,45 @@
   }
 
 ### /usres
-
+- GET /users  -  すべてのusersをget
+- GET /users/:user_id  -  一つのuserをget
+- POST /users  -  create user
+- ```json
+  {
+    "user":{
+        "username": "newuser",
+        "password": "123456",
+        "password_confirmation": "123456"
+    }
+  }
+- POST /users/login  -  login
+- ```json
+  {
+    "user":{
+        "username":"newuser",
+        "password":"123456"
+    }
+  }
+- PUT /users/:user_id  -  update user info
+- ```json
+  {
+    "user":{
+        "username": "updateuser",
+        "password": "123456",
+        "password_confirmation": "123456"
+    }
+  }
+- DELETE /users/:user_id  -  delete user
 
 ### /categories
 - GET /categories  -  すべてのcategoriesをget
 
 ### /tags
-
-  
-  /users
-  /tags
-  /categories
+- GET /tags  -  すべてのtagsをget
+- GET /tags/:tag_id  -  一つのtagをget
+- DELETE /tags/:tag_id  -  delete tag
+- GET /tags/:tag_id/articles  -  tagに属しているすげてのarticleをget
+- 
 
 
 
