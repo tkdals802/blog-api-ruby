@@ -8,11 +8,10 @@
 
 ### API
 /api
--  GET /articles  -  get all articles
--  Get /articles/:id  -  get one article
--  POST /articles
+-  GET /articles  -  すべてのarticles get
+-  Get /articles/:id  -  idのarticleを get
+-  POST /articles  -  create article
 -  ```json
-   body example
    {
     "article":{
         "title": "hello",
@@ -22,7 +21,7 @@
         "tags": ["a","b","c"]
     }
    }
-- PUT /articles/:id
+- PUT /articles/:id  -  update article
 - ```json
   {
     "article":{
@@ -33,13 +32,21 @@
         "tags": ["a","b","c"]
     }
   }
-- DELETE /articles/:id
-- POST /articles/:article_id/tags
+- DELETE /articles/:id  -  delete article
+- POST /articles/:article_id/tags  -  一つのarticleにtagを追加
 - ```json
   {
     "tags": ["a","b","c","d"]
   }
-- GET /articles/:article_id/tags
+- GET /articles/:article_id/tags  -  一つのarticleのすべてのtagをget
+- GET /articles/search  -  keywordが含まれたtitleを検索
+- ```json
+  {
+     "keyword": "a"
+  }
+
+- GET /categories  -  すべてのcategoriesをget
+
 
   
   /users
