@@ -6,6 +6,9 @@
 - 開発os = ubuntu
 - 開発tool = ruby-mine, postman
 
+### setup
+`$ rails new blog-api --api --database=postgresql`
+
 ### DB Diagram 
 <img src="https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104" width="50%" />
 
@@ -110,4 +113,6 @@
 
 
 
-* ...
+rails jwt 参考資料
+https://dev.to/mohhossain/a-complete-guide-to-rails-authentication-using-jwt-403p
+
