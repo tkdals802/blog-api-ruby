@@ -216,7 +216,7 @@
     </entry>
     <entry key="test/mailers/previews">
       <value>file://$MODULE_DIR$/test/mailers/previews</value>
-      <value>file:///home/tkdals802/workspace/blog-api/test/mailers/previews</value>
+      <value>file:///home/tkdals802/workspace/ruby-blog/blog-api/test/mailers/previews</value>
     </entry>
     <entry key="tmp">
       <value>file://$MODULE_DIR$/tmp</value>
