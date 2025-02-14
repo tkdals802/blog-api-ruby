@@ -9,6 +9,7 @@
 
 
 ### rails setup
+ubuntuにpostgresqlをインストールした後、username、passwordを設定
 * `$ rails new blog-api --api --database=postgresql`
 * `$ rails generate model User username:string password:string`
 * `$ rails generate model Article user:references title:string content:string likes:integer`
