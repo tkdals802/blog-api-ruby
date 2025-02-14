@@ -10,9 +10,9 @@
 <img src="https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104" width="50%" />
 
 ### project構造
-- `|----` : 현재 디렉터리에서 하위 디렉터리로 이동하는 선을 나타냅니다.
-- `│   └──` : 하위 항목을 나타내며, 들여쓰기를 사용하여 트리 구조를 만듭니다.
-- `└──` : 마지막 항목을 나타내는 선입니다.
+├── app/
+│   ├── models/
+│   └── views/
 
 
 ## API文書
