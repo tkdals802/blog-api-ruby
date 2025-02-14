@@ -8,15 +8,15 @@ class ApplicationController < ActionController::Base
     token_expiration = 1.hours.from_now.to_i
     payload[:exp] = token_expiration
     Rails.logger.info "payload #{payload[:exp]}"
-    JWT.encode(payload, ENV['JWT_SECRET_KEY'], 'HS256')
+    JWT.encode(payload, ENV["JWT_SECRET_KEY"], "HS256")
   end
 
   def decoded_token
-    header = request.headers['Authorization']
+    header = request.headers["Authorization"]
     if header
-      token = header.split(' ')[1]
+      token = header.split(" ")[1]
       begin
-        JWT.decode(token, ENV['JWT_SECRET_KEY'])
+        JWT.decode(token, ENV["JWT_SECRET_KEY"])
       rescue JWT::DecodeError
         nil
       rescue JWT::ExpiredSignature
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if decoded_token
-      user_id = decoded_token[0]['user_id']
+      user_id = decoded_token[0]["user_id"]
       @user = User.find_by(id: user_id)
       Rails.logger.info "decoded_token #{user_id} #{@user.username} #{@user.id}"
       @user
@@ -37,13 +37,13 @@ class ApplicationController < ActionController::Base
 
   def authorized
     unless !!current_user
-      render json: {message: 'Please log in'}, status: 403
+      render json: { message: "Please log in" }, status: 403
       return
     end
 
     if decoded_token.nil?
-      render json: {message: 'Token is expired or invalid'}, status: 401
-      return
+      render json: { message: "Token is expired or invalid" }, status: 401
+      nil
     end
   end
 end

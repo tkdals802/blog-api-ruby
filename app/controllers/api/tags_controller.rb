@@ -1,5 +1,4 @@
 class Api::TagsController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   def index
@@ -26,9 +25,9 @@ class Api::TagsController < ApplicationController
     @tags = Tag.find(params[:id])
     if @tags
       @tags.destroy
-      render json: {message: 'delete tag success'}, status: 200
+      render json: { message: "delete tag success" }, status: 200
     else
-      render json:{error: 'Unable find tags'}, status: 400
+      render json: { error: "Unable find tags" }, status: 400
     end
   end
 
@@ -37,11 +36,11 @@ class Api::TagsController < ApplicationController
     if @tag
       @articles = @tag.articles
       render json: {
-        message: 'get tag and articles successfully',
+        message: "get tag and articles successfully",
         articles: @articles
       }, status: 200
     else
-      render json: {error: 'No such tag'}, status: 400
+      render json: { error: "No such tag" }, status: 400
     end
   end
 

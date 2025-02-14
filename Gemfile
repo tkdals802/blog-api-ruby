@@ -16,12 +16,12 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 
-gem 'rack-cors', require: 'rack/cors' #for cors
-gem 'bcrypt' #for password hashing
+gem "rack-cors", require: "rack/cors" # for cors
+gem "bcrypt" # for password hashing
 
-gem 'jwt' #for jwt token when login
+gem "jwt" # for jwt token when login
 
-gem 'dotenv-rails' #for use .env file
+gem "dotenv-rails" # for use .env file
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

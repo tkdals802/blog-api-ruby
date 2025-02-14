@@ -9,19 +9,19 @@ Rails.application.routes.draw do
   get "tags/destroy"
   get "up" => "rails/health#show", as: :rails_health_check
   namespace :api do
-    resources :users, only: [:index, :show ,:create ,:update ,:destroy] do
-      post 'login', on: :collection
+    resources :users, only: [ :index, :show, :create, :update, :destroy ] do
+      post "login", on: :collection
     end
     resources :articles do
-      post 'tags', to: 'articles#add_tags'
-      get 'tags', to: 'articles#show_tags'
+      post "tags", to: "articles#add_tags"
+      get "tags", to: "articles#show_tags"
       collection do
-        get 'search', to: 'articles#search'
+        get "search", to: "articles#search"
       end
     end
 
     resources :tags do
-      get 'articles', to: 'tags#show_articles'
+      get "articles", to: "tags#show_articles"
     end
 
     resources :categories do

@@ -1,6 +1,5 @@
 class Api::ArticlesController < ApplicationController
-
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update, :add_tags]
+  skip_before_action :verify_authenticity_token, only: [ :create, :destroy, :update, :add_tags ]
 
 
   def index
@@ -14,9 +13,9 @@ class Api::ArticlesController < ApplicationController
     end
 
     render json: {
-      message: 'get articles successfully',
+      message: "get articles successfully",
       articles: articles_with_category,
-      include: ['tags', 'category']
+      include: [ "tags", "category" ]
     }
   end
 
@@ -28,13 +27,13 @@ class Api::ArticlesController < ApplicationController
       tags = @article.tags
 
       render json: {
-        message: 'get article successfully',
+        message: "get article successfully",
         article: @article,
         category_name: @category.name,
         tags: tags
       }, status: 200
     else
-      render json: {error: "Article not found"}, status: 404
+      render json: { error: "Article not found" }, status: 404
     end
   end
 
@@ -55,7 +54,7 @@ class Api::ArticlesController < ApplicationController
     if @article.save
       render json: {
         message: "Article create success",
-        article: @article,
+        article: @article
       }, status: 201
 
       tag_names = article_params[:tags]  # ["a", "b", "c"]
@@ -66,7 +65,7 @@ class Api::ArticlesController < ApplicationController
       end
 
     else
-      render json: {error: 'Unable to create article'}, status: 400
+      render json: { error: "Unable to create article" }, status: 400
     end
   end
 
@@ -93,16 +92,16 @@ class Api::ArticlesController < ApplicationController
         category_id: @category.id
       )
         render json: {
-          message: 'Article successfully updated',
+          message: "Article successfully updated",
           article: @article
         }, status: 200
       else
-        render json:{
-          message: 'Article update failed',
+        render json: {
+          message: "Article update failed"
         }, status: 400
       end
     else
-      render json: { error: 'Article not found' }, status: 404
+      render json: { error: "Article not found" }, status: 404
     end
   end
 
@@ -110,9 +109,9 @@ class Api::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article
       @article.destroy
-      render json: {message: 'Article successfully deleted'}, status: 200
+      render json: { message: "Article successfully deleted" }, status: 200
     else
-      render json:{error: 'Unable to delete article'}, status: 400
+      render json: { error: "Unable to delete article" }, status: 400
     end
   end
 
@@ -127,9 +126,9 @@ class Api::ArticlesController < ApplicationController
         Rails.logger.info "1111 #{tag_name}"
         @article.tags << tag unless @article.tags.include?(tag)
       end
-      render json: { message: 'Tags successfully added' }, status: 200
+      render json: { message: "Tags successfully added" }, status: 200
     else
-      render json: { error: 'Article not found' }, status: 404
+      render json: { error: "Article not found" }, status: 404
     end
   end
 
@@ -139,26 +138,26 @@ class Api::ArticlesController < ApplicationController
     if @article
       tags = @article.tags
       render json: {
-        message: 'get article and tags successfully',
+        message: "get article and tags successfully",
         tags: tags
       }, status: 200
     else
-      render json: {error: 'Article not found'}, status: 404
+      render json: { error: "Article not found" }, status: 404
     end
   end
 
   def search
-    @articles = Article.where('title LIKE ?', "%#{params[:keyword]}%")
+    @articles = Article.where("title LIKE ?", "%#{params[:keyword]}%")
 
     Rails.logger.info "Search Params: #{params.inspect}"
     render json: {
-      message: 'search articles successfully',
+      message: "search articles successfully",
       articles: @articles
     }, status: 200
     if @articles.empty?
       render json: {
-        message: 'No articles found'
-      }, status: 200 #not error
+        message: "No articles found"
+      }, status: 200 # not error
     end
   end
 
@@ -171,5 +170,4 @@ class Api::ArticlesController < ApplicationController
   def update_params
     params.require(:article).permit(:title, :content, :category_name, tags: [])
   end
-
 end
