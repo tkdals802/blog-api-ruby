@@ -11,6 +11,7 @@
 -  GET /articles  -  get all articles
 -  Get /articles/:id  -  get one article
 -  POST /articles
+-  ```json
     params = {
     "article":{
         "title": "hello",
