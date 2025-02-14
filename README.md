@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ruby-version = 3.4.1
+rails-version = 8.0.1
+postgres-version = 14.15
 
-Things you may want to cover:
+개발 os = ubuntu
+개발환경 = ruby-mine
 
-* Ruby version
+###API
+/api
+  GET /articles  -  get all articles
+  Get /articles/:id  -  get one article
+  POST /articles
+    params = {
+    "article":{
+        "title": "hello",
+        "content": "hello world!!!",
+        "user_id": 18,
+        "category_name": "category_1",
+        "tags": ["a","b","c"]
+    }
+}
 
-* System dependencies
 
-* Configuration
+  
+  /users
+  /tags
+  /categories
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
