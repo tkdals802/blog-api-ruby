@@ -9,11 +9,11 @@
 
 
 ### rails setup
-`$ rails new blog-api --api --database=postgresql`
-`$ rails generate model User username:string password:string`
-`$ rails generate model Article user:references title:string content:string likes:integer`
-`$ rails db:setup`
-`$ rails db:migrate`
+* `$ rails new blog-api --api --database=postgresql`
+* `$ rails generate model User username:string password:string`
+* `$ rails generate model Article user:references title:string content:string likes:integer`
+* `$ rails db:setup`
+* `$ rails db:migrate`
 
 参考資料　https://medium.com/@oliver.seq/creating-a-rest-api-with-rails-2a07f548e5dc
 
