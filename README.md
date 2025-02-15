@@ -9,6 +9,8 @@
 
 
 ### rails setup
+本来は、.envファイルはpushしてはいけませんが、同じ環境のセッティングのために今回の場合だけpushしました。
+
 ubuntuにpostgresqlをインストールした後、username、passwordを設定
 postgresql
 -username : postgres
