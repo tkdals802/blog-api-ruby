@@ -24,6 +24,11 @@ postgresql
 
 参考資料　https://medium.com/@oliver.seq/creating-a-rest-api-with-rails-2a07f548e5dc
 
+### 任意で工夫したポイント
+
+- login状態の維持、確認のためのjwt_token導入
+- article-tagのn:m関係具現のためのarticles_tags中間テーブル製作
+
 
 ### DB Diagram 
 <img src="https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104" width="50%" />
