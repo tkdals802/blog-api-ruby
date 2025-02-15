@@ -2,12 +2,13 @@ class Api::ArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :create, :destroy, :update, :add_tags ]
 
 
+  #GET /articles
   def index
-    @articles = Article.includes(:tags, :category).all # category도 함께 포함
+    @articles = Article.includes(:tags, :category).all # articleにcategoryとtagsを含める
     articles_with_category = @articles.map do |article|
       {
         article: article,
-        category_name: article.category.name, # 각 article에서 category_name을 가져옴
+        category_name: article.category.name,
         tags: article.tags # 태그도 함께 포함
       }
     end
@@ -19,6 +20,7 @@ class Api::ArticlesController < ApplicationController
     }
   end
 
+  #GET /articles/:article_id
   def show
     @article = Article.find_by(id: params[:id])
 
@@ -37,7 +39,9 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  #POST /articles
   def create
+    #params = :title, :content, :user_id, :category_name, tags: []
     @category = Category.find_by(name: article_params[:category_name])
 
     if @category.nil?
@@ -59,6 +63,8 @@ class Api::ArticlesController < ApplicationController
 
       tag_names = article_params[:tags]  # ["a", "b", "c"]
 
+      #tableにtagがなければ新しく造る
+      #articles_tags tableに m:n関係を書く
       tag_names.each do |tag_name|
         tag = Tag.find_or_create_by(name: tag_name)
         @article.tags << tag unless @article.tags.include?(tag)
@@ -69,6 +75,7 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  #PUT /articles/:article_id
   def update
     @article = Article.find(params[:id])
     if @article
@@ -77,10 +84,13 @@ class Api::ArticlesController < ApplicationController
         @category = Category.create(name: update_params[:category_name])
       end
 
+      #重複を避けるために元のtagsを全部削除して新しく書く
       @article.tags.clear
 
       tag_names = article_params[:tags]  # ["a", "b", "c"]
 
+      #tableにtagがなければ新しく造る
+      #articles_tags tableに m:n関係を書く
       tag_names.each do |tag_name|
         tag = Tag.find_or_create_by(name: tag_name)
         @article.tags << tag unless @article.tags.include?(tag)
@@ -105,6 +115,7 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  #delete /articles/:article_id
   def destroy
     @article = Article.find(params[:id])
     if @article
@@ -115,6 +126,8 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  #POST /articles/:article_id/tags
+  # articleにtagを入る
   def add_tags
     @article = Article.find_by(id: params[:article_id])
 
@@ -123,7 +136,6 @@ class Api::ArticlesController < ApplicationController
       Rails.logger.info tag_names
       tag_names.each do |tag_name|
         tag = Tag.find_or_create_by(name: tag_name)
-        Rails.logger.info "1111 #{tag_name}"
         @article.tags << tag unless @article.tags.include?(tag)
       end
       render json: { message: "Tags successfully added" }, status: 200
@@ -132,6 +144,8 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/:article_id/tags
+  # articleのtagsを検索
   def show_tags
     @article = Article.find_by(id: params[:article_id])
 
@@ -146,18 +160,20 @@ class Api::ArticlesController < ApplicationController
     end
   end
 
+  # /articles/search
   def search
+    #keywordが入っているtitleを全部検索
     @articles = Article.where("title LIKE ?", "%#{params[:keyword]}%")
 
-    Rails.logger.info "Search Params: #{params.inspect}"
-    render json: {
-      message: "search articles successfully",
-      articles: @articles
-    }, status: 200
     if @articles.empty?
       render json: {
         message: "No articles found"
       }, status: 200 # not error
+    else
+      render json: {
+        message: "search articles successfully",
+        articles: @articles
+      }, status: 200
     end
   end
 
