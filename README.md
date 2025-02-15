@@ -36,6 +36,7 @@ postgresql
 
 - ruby、railsのすべてを初めて使ってみること
 - windowsで開発環境を作ろうとしましたが、setupの過程でいくつかの問題が生じてubuntuに移ることになりました
+- postgresqlのsetting
 - railsのルーティングに慣れていなかった問題
 
 ### DB Diagram 
