@@ -1,11 +1,13 @@
 class Api::TagsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  # GET /tags
   def index
     @tags = Tag.all
     render json: @tags
   end
 
+  # GET /tags/:tag_id
   def show
     @tags = Tag.find(params[:id])
     render json: @tags
@@ -21,6 +23,7 @@ class Api::TagsController < ApplicationController
   #   render json: {message: 'Tag successfully created'}, status: 200
   # end
 
+  # DELETE /tags/:tag_id
   def destroy
     @tags = Tag.find(params[:id])
     if @tags
@@ -31,6 +34,8 @@ class Api::TagsController < ApplicationController
     end
   end
 
+  # GET /tags/:tag_id/articles
+  # 一つのtagが持っているarticleを検索
   def show_articles
     @tag = Tag.find_by(id: params[:tag_id])
     if @tag

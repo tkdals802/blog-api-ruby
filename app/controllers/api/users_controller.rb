@@ -8,20 +8,21 @@ class Api::UsersController < ApplicationController
     render json: @users
   end
 
-  # Get /users/id
+  # Get /users/:user_id
   def show
     @user = User.find(params[:id])
     render json: @user
   end
 
+  # POST /users/login
   def login
     @user = User.find_by(username: params[:user][:username])
 
     if @user.nil?
       render json: { error: "User not found" }, status: 404
     else
-      if @user.authenticate(params[:user][:password])
-        @token = encode_token({ user_id: @user.id })
+      if @user.authenticate(params[:user][:password])# password hashing(bcrypt)
+        @token = encode_token({ user_id: @user.id }) #make jwt_token
         render json: {
           message: "Login successful",
           user: @user,
@@ -35,10 +36,9 @@ class Api::UsersController < ApplicationController
 
   # Post /users
   def create
-    Rails.logger.info("Received params: #{params.inspect}")
-
+    # param = :username, :password, :password_confirmation
     @user = User.new(user_params)
-    @token = encode_token(user_id: @user.id)
+    @token = encode_token(user_id: @user.id) #make jwt_token
 
     if @user.save
       render json: {
@@ -53,6 +53,7 @@ class Api::UsersController < ApplicationController
 
   # Put /users
   def update
+    # user_params = :username, :password, :password_confirmation
     @user = User.find(params[:id])
     if @user
       @user.update(user_params)
