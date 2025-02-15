@@ -1,5 +1,4 @@
 class Api::CategoriesController < ApplicationController
-
   # GET /categories
   # main pageでcategory listを造る
   def index

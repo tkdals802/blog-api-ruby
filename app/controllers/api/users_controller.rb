@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
       render json: { error: "User not found" }, status: 404
     else
       if @user.authenticate(params[:user][:password])# password hashing(bcrypt)
-        @token = encode_token({ user_id: @user.id }) #make jwt_token
+        @token = encode_token({ user_id: @user.id }) # make jwt_token
         render json: {
           message: "Login successful",
           user: @user,
@@ -38,7 +38,7 @@ class Api::UsersController < ApplicationController
   def create
     # param = :username, :password, :password_confirmation
     @user = User.new(user_params)
-    @token = encode_token(user_id: @user.id) #make jwt_token
+    @token = encode_token(user_id: @user.id) # make jwt_token
 
     if @user.save
       render json: {
