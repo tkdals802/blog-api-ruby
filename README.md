@@ -28,6 +28,8 @@ postgresql
 
 - login状態の維持、確認のためのjwt_token導入
 - article-tagのn:m関係具現のためのarticles_tags中間テーブル製作
+- bcryptを使ったpassword hashing
+- tagがdbになければtagを新しく作り、tag update時にarticle-tag関係を初期化して関係を新しく作成
 
 
 ### DB Diagram 
