@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
+  # delete cascadeために
 
   has_secure_password # for password hashing
 
