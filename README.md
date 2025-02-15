@@ -32,6 +32,11 @@ postgresql
 - bcryptを使ったpassword hashing
 - tagがdbになければtagを新しく作り、tag update時にarticle-tag関係を初期化して関係を新しく作成
 
+### 困難を経験した部分
+
+- ruby、railsのすべてを初めて使ってみること
+- windowsで開発環境を作ろうとしましたが、setupの過程でいくつかの問題が生じてubuntuに移ることになりました
+- railsのルーティングに慣れていなかった問題
 
 ### DB Diagram 
 <img src="https://github.com/user-attachments/assets/9fc1cc26-59bd-48d7-95f5-b5fa1c9e1104" width="50%" />
