@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     token_expiration = 1.hours.from_now.to_i # token満了時間設定 - 1時間
     payload[:exp] = token_expiration
     Rails.logger.info "payload #{payload[:exp]}"
-    JWT.encode(payload, ENV["JWT_SECRET_KEY"], "HS256")　# .env fileのsecret_key
+    JWT.encode(payload, ENV["JWT_SECRET_KEY"], "HS256") # env fileのsecret_key
   end
 
   # test jwt_token
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    if decoded_token.nil? #tokenが有効でなければ
+    if decoded_token.nil? # tokenが有効でなければ
       render json: { message: "Token is expired or invalid" }, status: 401
       nil
     end
