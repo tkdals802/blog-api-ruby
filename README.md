@@ -27,6 +27,7 @@ postgresql
 ### 任意で工夫したポイント
 
 - login状態の維持、確認のためのjwt_token導入
+- login、create userを除くapi呼び出しごとにjwt_token検証によるlogin状態確認
 - article-tagのn:m関係具現のためのarticles_tags中間テーブル製作
 - bcryptを使ったpassword hashing
 - tagがdbになければtagを新しく作り、tag update時にarticle-tag関係を初期化して関係を新しく作成
