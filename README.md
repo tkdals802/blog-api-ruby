@@ -46,17 +46,13 @@ postgresql
 1. aws ec2 実行 (ubuntu, freetier)
 2. aws rds 実行 (postgresql, 14.15, freetier)
 3. ec2 内部にrails、ruby、postgresqlを設置
-`
- $ rbenv install -l
-
- $ gem install bundler
-
- $ gem install rails
-
- $ sudo apt install ruby-railties
-
- $ sudo apt install -y postgresql-client`
-`
+   `
+   $ rbenv install -l
+   $ gem install bundler
+   $ gem install rails
+   $ sudo apt install ruby-railties
+   $ sudo apt install -y postgresql-client
+   `
 
 3. ec2内部にENV設定
    `
