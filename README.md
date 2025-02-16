@@ -46,43 +46,48 @@ postgresql
 1. aws ec2 実行 (ubuntu, freetier)
 2. aws rds 実行 (postgresql, 14.15, freetier)
 3. ec2 内部にrails、ruby、postgresqlを設置
-   `
-   $ rbenv install -l\n
-   $ gem install bundler\n
-   $ gem install rails\n
-   $ sudo apt install ruby-railties
-   $ sudo apt install -y postgresql-client
-   `
+   `$ rbenv install -l`
+   
+   `$ gem install bundler`
+
+   `$ gem install rails`
+
+   `$ sudo apt install ruby-railties`
+
+   `$ sudo apt install -y postgresql-client`
+   
 
 3. ec2内部にENV設定
-   `
-$ export SECRET_KEY_BASE=<プロジェクトの.envファイルのJWT_SECRETKEYの内容>
+   `$ export SECRET_KEY_BASE=<プロジェクトの.envファイルのJWT_SECRETKEYの内容>`
+   
+   `$ export RAILS_MASTER_KEY=<プロジェクトの.envファイルのmaster.keyの内容>`
 
-$ export RAILS_MASTER_KEY=<プロジェクトの.envファイルのmaster.keyの内容>
+   `$ export BLOG_API_DATABASE_PASSWORD=<tkdals802> aws rdsのpassword`
 
-$ export BLOG_API_DATABASE_PASSWORD=<tkdals802> aws rdsのpassword
-   `
 4. config/database.yml fileの修整
    productionに username, host, passwordを設定
 <img src="https://github.com/user-attachments/assets/c7b995c2-cfdf-4bd7-af27-9c0eb506a5f7" width="50%">
 
 5. config/environments/production.rbにconfig.secret_key_base追加
-`
-config.secret_key_base = ENV["SECRET_KEY_BASE"]
-`   
+
+   `config.secret_key_base = ENV["SECRET_KEY_BASE"]`   
+
 6. docker
    local
-   `
- $ docker build -t ruby_blog .
- $ docker tag ruby_blog chasangmin/ruby_blog:1.4
- $ docker push chasangmin/ruby_blog:1.4
-   `
+   
+    `$ docker build -t ruby_blog .`
+   
+    `$ docker tag ruby_blog chasangmin/ruby_blog:1.4`
+   
+    `$ docker push chasangmin/ruby_blog:1.4`
+   
    ec2 console
-   `
- $ docker pull chasangmin/ruby_blog:1.4
- $ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -p 3000:3000 chasangmin/ruby_blog:1.4
-   `
-  7. http://54.180.196.79:3000/ に接続
+   
+    `$ docker pull chasangmin/ruby_blog:1.4`
+   
+    `$ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -p 3000:3000 chasangmin/ruby_blog:1.4`
+   
+  8. http://54.180.196.79:3000/ に接続
        
 ### project構造
 
