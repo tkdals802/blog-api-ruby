@@ -46,21 +46,25 @@ postgresql
 1. aws ec2 実行 (ubuntu, freetier)
 2. aws rds 実行 (postgresql, 14.15, freetier)
 3. ec2 内部にrails、ruby、postgresqlを設置
-`rbenv install -l
+`
+ $ rbenv install -l
 
-gem install bundler
+ $ gem install bundler
 
-gem install rails
+ $ gem install rails
 
-sudo apt install ruby-railties
+ $ sudo apt install ruby-railties
 
-sudo apt install -y postgresql-client`
+ $ sudo apt install -y postgresql-client`
+`
 
 3. ec2内部にENV設定
    `
-export SECRET_KEY_BASE=<プロジェクトの.envファイルのJWT_SECRETKEYの内容>
-export RAILS_MASTER_KEY=<プロジェクトの.envファイルのmaster.keyの内容>
-export BLOG_API_DATABASE_PASSWORD=<tkdals802> aws rdsのpassword
+$ export SECRET_KEY_BASE=<プロジェクトの.envファイルのJWT_SECRETKEYの内容>
+
+$ export RAILS_MASTER_KEY=<プロジェクトの.envファイルのmaster.keyの内容>
+
+$ export BLOG_API_DATABASE_PASSWORD=<tkdals802> aws rdsのpassword
    `
 4. config/database.yml fileの修整
    productionに username, host, passwordを設定
