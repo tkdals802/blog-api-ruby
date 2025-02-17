@@ -88,7 +88,19 @@ postgresql
     `$ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -d -p 3000:3000 chasangmin/ruby_blog:1.4`
    
   8. http://54.180.196.79:3000/ に接続
+
+   参考　＝　https://medium.com/@waseem.ghafoor/deploy-rails-app-on-ec2-instance-using-docker-7dfeb58bb643
+
+   9. tokenを送るとき'Filter chain halted as :authorized rendered or redirected'の問題が発生
+      - ec2に JWT_SECRET_KEY ENVを追加
+      `export JWT_SECRET_KEY=<jwt_secret_key>`
+      - config/application.rbに ip port追加
+      - <img src="https://github.com/user-attachments/assets/495cacb4-3650-4206-bae6-91c2631c0d0f">
+
+      docker push
+  
        
+
 ### project構造
 
 * app/
