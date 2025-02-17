@@ -85,7 +85,7 @@ postgresql
    
     `$ docker pull chasangmin/ruby_blog:1.4`
    
-    `$ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -d -p 3000:3000 chasangmin/ruby_blog:1.4`
+    `$ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -d -p 3000:3000 chasangmin/ruby_blog:1.7`
    
   8. api address = http://54.180.196.79:3000/api/
 
