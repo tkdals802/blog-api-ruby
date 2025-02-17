@@ -87,7 +87,7 @@ postgresql
    
     `$ sudo docker run -e RAILS_ENV=production -e SECRET_KEY_BASE=$SECRET_KEY_BASE -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -e BLOG_API_DATABASE_PASSWORD=$BLOG_API_DATABASE_PASSWORD -d -p 3000:3000 chasangmin/ruby_blog:1.4`
    
-  8. http://54.180.196.79 に接続
+  8. api address = http://54.180.196.79:3000/api/
 
    参考　＝　https://medium.com/@waseem.ghafoor/deploy-rails-app-on-ec2-instance-using-docker-7dfeb58bb643
 
